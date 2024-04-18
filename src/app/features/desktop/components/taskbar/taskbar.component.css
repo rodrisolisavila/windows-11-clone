@@ -1,0 +1,9 @@
+.pi-search {
+    transform: scaleX(-1);
+}
+
+.taskbar-section {
+    height: 40px;
+    background-color: #EDEEF1;
+    z-index: 2;
+}

@@ -17,3 +17,19 @@ body {
     justify-content: center;
     align-items: center;
 } */
+
+.p-dialog-header {
+    display: block;
+    padding: 10px 15px;
+    background-color: #F3F4F6;
+}
+
+.p-dialog-footer {
+    padding: 10px 15px;
+    background-color: #EBECF0;
+    border-top: 1px solid #C4C6CC;
+}
+
+.p-dialog-content {
+    background-color: #F3F4F6;
+}

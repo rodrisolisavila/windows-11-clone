@@ -8,6 +8,7 @@ import { Component } from '@angular/core';
 export class TaskbarComponent {
 
   public visible: boolean = false;
+  //public positionTop: number = window.innerHeight - 900;
 
   constructor() {}
 

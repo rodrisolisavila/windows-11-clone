@@ -4,6 +4,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { DialogModule } from 'primeng/dialog';
 import { InputTextModule } from 'primeng/inputtext';
+import { AvatarModule } from 'primeng/avatar';
+import { AvatarGroupModule } from 'primeng/avatargroup';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -21,7 +23,9 @@ import { TaskbarComponent } from './features/desktop/components/taskbar/taskbar.
     AppRoutingModule,
     DialogModule,
     BrowserAnimationsModule,
-    InputTextModule
+    InputTextModule,
+    AvatarModule,
+    AvatarGroupModule
   ],
   providers: [],
   bootstrap: [AppComponent]
