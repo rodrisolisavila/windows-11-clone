@@ -18,6 +18,11 @@ body {
     align-items: center;
 } */
 
+.p-dialog {
+    z-index: 1 !important;
+
+}
+
 .p-dialog-header {
     display: block;
     padding: 10px 15px;
