@@ -2,8 +2,6 @@
     transform: scaleX(-1);
 }
 
-.taskbar-section {
-    height: 40px;
+.taskbar-background {
     background-color: #EDEEF1;
-    z-index: 2;
 }
