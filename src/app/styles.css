@@ -190,3 +190,11 @@ body {
     aspect-ratio: 1;
     width: 40%;
 }
+
+.top-left-menu-tab div:hover {
+    background-color: var(--glass-white-color);
+}
+
+.top-left-menu-tab div:nth-child(3):hover {
+    background-color: rgb(255, 0, 25);
+}

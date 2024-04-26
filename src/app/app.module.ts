@@ -11,12 +11,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DesktopComponent } from './features/desktop/desktop.component';
 import { TaskbarComponent } from './features/desktop/components/taskbar/taskbar.component';
+import { WindowComponent } from './core/components/window/window.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     DesktopComponent,
-    TaskbarComponent
+    TaskbarComponent,
+    WindowComponent
   ],
   imports: [
     BrowserModule,
