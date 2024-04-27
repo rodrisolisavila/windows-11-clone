@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { DesktopComponent } from './features/desktop/desktop.component';
+import { DesktopComponent } from './core/components/desktop/desktop.component';
 
 const routes: Routes = [
   {

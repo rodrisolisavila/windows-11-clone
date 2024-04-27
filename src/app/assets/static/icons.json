@@ -1,0 +1,26 @@
+{
+  "desktop_icons": [
+    {
+      "name": "NyarukoNV",
+      "id": "nyarukonv",
+      "image_path": "app/assets/icons/desktop/nyarukonv.png"
+    }
+  ],
+  "taskbar_icons": [
+    {
+      "name": "Start",
+      "id": "start",
+      "image_path": "app/assets/icons/taskbar/Start_Light.png"
+    },
+    {
+      "name": "Search",
+      "id": "search",
+      "image_path": "app/assets/icons/taskbar/Search_Light.png"
+    },
+    {
+      "name": "Widgets",
+      "id": "widgets",
+      "image_path": "app/assets/icons/taskbar/Widgets.png"
+    }
+  ]
+}

@@ -1,34 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 @import "primeicons/primeicons.css";
 
-/* html,
-body {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-}
-
-.p-dialog {
-    z-index: 1 !important;
-
-}
-
-.p-dialog-header {
-    display: block;
-    padding: 10px 15px;
-    background-color: #F3F4F6;
-}
-
-.p-dialog-footer {
-    padding: 10px 15px;
-    background-color: #EBECF0;
-    border-top: 1px solid #C4C6CC;
-}
-
-.p-dialog-content {
-    background-color: #F3F4F6;
-} */
-
 * {
     --nav-height: 3rem;
     --img-nav-height: calc(var(--nav-height) - 1.5rem);
