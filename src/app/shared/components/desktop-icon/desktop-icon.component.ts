@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'desktop-icon',
@@ -7,9 +7,12 @@ import { Component } from '@angular/core';
 })
 export class DesktopIconComponent {
 
+  @Input()
+  public id: string = '';
 
-  openWindow(){
-    return true;
-  }
+  @Input()
+  public image_path: string = '';
+
+  constructor() {}
 
 }

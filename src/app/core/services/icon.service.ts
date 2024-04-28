@@ -13,8 +13,11 @@ export class IconService {
 
   constructor(private http: HttpClient) { }
 
-  getDesktopIcons(): Observable<any> {
-    return this.http.get(`${this.iconDataUrl}`);
+  getDesktopIcons(): Observable<Icon[]> {
+    return this.http.get<{ desktop_icons: Icon[] }>(`${this.iconDataUrl}`).pipe(
+      map(data => data.desktop_icons || []),
+      catchError(() => of([])),
+    );
   }
 
   getTaskbarIcons(): Observable<Icon[]> {

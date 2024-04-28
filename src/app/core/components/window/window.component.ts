@@ -1,11 +1,13 @@
-import { Component, ElementRef, Input, ViewChild } from '@angular/core';
+import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import { AppWindowService } from '../../services/app-window.service';
+
 
 @Component({
   selector: 'window',
   templateUrl: './window.component.html',
   styleUrl: './window.component.css'
 })
-export class WindowComponent {
+export class WindowComponent implements OnInit {
 
   @ViewChild('window')
   public window!: ElementRef<HTMLInputElement>;
@@ -19,7 +21,17 @@ export class WindowComponent {
   @Input()
   public visible: boolean = false;
 
-  constructor() { }
+  constructor(private appWindowService: AppWindowService) { }
+
+  ngOnInit() {
+    this.appWindowService.isVisible$.subscribe((isVisible) => {
+      this.visible = isVisible;
+    });
+  }
+
+  closeWindow() {
+    this.appWindowService.hideWindow();
+  }
 
   showDialog() {
     this.visible = !this.visible;
@@ -58,10 +70,5 @@ export class WindowComponent {
     this.window.nativeElement.style.transitionDuration = "0.5s";
     console.log("TOP TAB");
   }
-
-  closeWindow() {
-    this.visible = !this.visible;
-  }
-
 
 }

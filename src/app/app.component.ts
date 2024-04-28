@@ -14,8 +14,4 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     this.primengConfig.ripple = true;
   }
-
-  showDialog() {
-    console.log("holaaaaaa");
-  }
 }

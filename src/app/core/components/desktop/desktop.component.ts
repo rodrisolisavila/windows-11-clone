@@ -1,4 +1,7 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component } from '@angular/core';
+import { AppWindowService } from '../../services/app-window.service';
+import { IconService } from '../../services/icon.service';
+import { Icon } from '../../interfaces/icon.interface';
 
 @Component({
   selector: 'desktop',
@@ -7,12 +10,17 @@ import { Component, EventEmitter, Output } from '@angular/core';
 })
 export class DesktopComponent {
 
-  @Output()
-  public onOpenApp: EventEmitter<string> = new EventEmitter();
+  public icons: Icon[] = [];
 
-  constructor() {}
+  constructor(private iconService: IconService, private appWindowService: AppWindowService,) {
+    this.iconService.getDesktopIcons().subscribe(icons => {
+      this.icons = icons;
+      console.log(icons);
+    });
+  }
 
-  openApp(){
-    this.onOpenApp.emit('');
+
+  openApp() {
+    this.appWindowService.showWindow();
   }
 }

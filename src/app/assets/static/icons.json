@@ -4,6 +4,11 @@
       "name": "NyarukoNV",
       "id": "nyarukonv",
       "image_path": "app/assets/icons/desktop/nyarukonv.png"
+    },
+    {
+      "name": "VSCode",
+      "id": "vscode",
+      "image_path": "app/assets/icons/desktop/vscode.svg"
     }
   ],
   "taskbar_icons": [
