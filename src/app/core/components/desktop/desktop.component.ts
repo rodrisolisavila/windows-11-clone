@@ -13,14 +13,13 @@ export class DesktopComponent {
   public icons: Icon[] = [];
 
   constructor(private iconService: IconService, private appWindowService: AppWindowService,) {
-    this.iconService.getDesktopIcons().subscribe(icons => {
+    this.iconService.iconDesktop$.subscribe((icons) => {
       this.icons = icons;
-      console.log(icons);
     });
   }
 
 
-  openApp() {
-    this.appWindowService.showWindow();
+  openApp(id: string) {
+    this.appWindowService.showWindow(id);
   }
 }

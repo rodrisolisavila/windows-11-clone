@@ -3,12 +3,16 @@
     {
       "name": "NyarukoNV",
       "id": "nyarukonv",
-      "image_path": "app/assets/icons/desktop/nyarukonv.png"
+      "image_path": "app/assets/icons/desktop/nyarukonv.png",
+      "window_title": "Nyaruko NV",
+      "url": ""
     },
     {
       "name": "VSCode",
       "id": "vscode",
-      "image_path": "app/assets/icons/desktop/vscode.svg"
+      "image_path": "app/assets/icons/desktop/vscode.svg",
+      "window_title": "VS Code",
+      "url": ""
     }
   ],
   "taskbar_icons": [

@@ -1,5 +1,8 @@
 import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { AppWindowService } from '../../services/app-window.service';
+import { IconDesktop } from '../../interfaces/icondesktop.interface';
+import { Icon } from '../../interfaces/icon.interface';
+import { IconService } from '../../services/icon.service';
 
 
 @Component({
@@ -18,23 +21,28 @@ export class WindowComponent implements OnInit {
   @ViewChild('tabImage')
   public tabImage!: ElementRef<HTMLInputElement>;
 
-  @Input()
-  public visible: boolean = false;
 
-  constructor(private appWindowService: AppWindowService) { }
+  public visible: boolean = false;
+  public id: string = '';
+  public icon: IconDesktop | undefined;
+
+  constructor(private appWindowService: AppWindowService,private iconService:IconService) { }
 
   ngOnInit() {
     this.appWindowService.isVisible$.subscribe((isVisible) => {
       this.visible = isVisible;
     });
+
+    this.appWindowService.id$.subscribe((id) => {
+      this.id =  id; // Asigna el ícono encontrado
+      this.iconService.getIconById(id).subscribe( icon => {
+        this.icon = icon
+      })
+    }); 
   }
 
   closeWindow() {
     this.appWindowService.hideWindow();
-  }
-
-  showDialog() {
-    this.visible = !this.visible;
   }
 
   minimizeWindow() {
@@ -69,6 +77,21 @@ export class WindowComponent implements OnInit {
     this.window.nativeElement.style.height = "calc(100vh - var(--nav-height))";
     this.window.nativeElement.style.transitionDuration = "0.5s";
     console.log("TOP TAB");
+  }
+
+  addIcon() {
+    const newIcon: Icon = {
+      name: this.icon!.name,
+      id: this.icon!.id,
+      image_path: this.icon!.image_path,
+    };
+    this.iconService.addDesktopIcon(newIcon);
+    this.appWindowService.hideWindow();
+  }
+
+  deleteIcon(id: string) {
+    this.iconService.deleteIconById(id);
+    this.appWindowService.hideWindow();
   }
 
 }

@@ -13,9 +13,8 @@ export class TaskbarComponent {
 
   constructor(private iconService: IconService) 
   {
-    this.iconService.getTaskbarIcons().subscribe( icons =>  {
+    this.iconService.iconTaskbar$.subscribe((icons) => {
       this.icons = icons;
-      console.log(icons);
     });
   }
 
