@@ -1,3 +1,2 @@
-<div class="flex align-content-start flex-wrap absolute z-1" style="min-height: 200px">
-    <desktop-icon *ngFor="let icon of icons" [id]="icon.id" [image_path]="icon.image_path" (click)="openApp(icon.id)"></desktop-icon>
-</div>
+<desktop-item *ngFor="let icon of icons" [id]="icon.id" [image_path]="icon.image_path"
+    (click)="openApp(icon.id)" class="desktop-item"></desktop-item>

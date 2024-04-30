@@ -1,11 +1,11 @@
 import { Component, Input } from '@angular/core';
 
 @Component({
-  selector: 'desktop-icon',
-  templateUrl: './desktop-icon.component.html',
-  styleUrl: './desktop-icon.component.css'
+  selector: 'desktop-item',
+  templateUrl: './desktop-item.component.html',
+  styleUrl: './desktop-item.component.css'
 })
-export class DesktopIconComponent {
+export class DesktopItemComponent {
 
   @Input()
   public id: string = '';

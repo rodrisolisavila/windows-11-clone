@@ -15,8 +15,8 @@ import { TaskbarComponent } from './core/components/taskbar/taskbar.component';
 import { WindowComponent } from './core/components/window/window.component';
 import { ActionCenterComponent } from './core/components/action-center/action-center.component';
 import { MenuStartComponent } from './core/components/menu-start/menu-start.component';
-import { DesktopIconComponent } from './shared/components/desktop-icon/desktop-icon.component';
-import { TaskbarIconComponent } from './shared/components/taskbar-icon/taskbar-icon.component';
+import { DesktopItemComponent } from './shared/components/desktop-icon/desktop-item.component';
+import { TaskbarItemComponent } from './shared/components/taskbar-icon/taskbar-item.component';
 
 @NgModule({
   declarations: [
@@ -26,8 +26,8 @@ import { TaskbarIconComponent } from './shared/components/taskbar-icon/taskbar-i
     WindowComponent,
     ActionCenterComponent,
     MenuStartComponent,
-    DesktopIconComponent,
-    TaskbarIconComponent
+    DesktopItemComponent,
+    TaskbarItemComponent
   ],
   imports: [
     BrowserModule,
