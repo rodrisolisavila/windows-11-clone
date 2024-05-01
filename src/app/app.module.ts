@@ -17,6 +17,9 @@ import { ActionCenterComponent } from './core/components/action-center/action-ce
 import { MenuStartComponent } from './core/components/menu-start/menu-start.component';
 import { DesktopItemComponent } from './shared/components/desktop-icon/desktop-item.component';
 import { TaskbarItemComponent } from './shared/components/taskbar-icon/taskbar-item.component';
+import { MenustartItemComponent } from './shared/components/menustart-item/menustart-item.component';
+import { SystemiconsComponent } from './core/components/systemicons/systemicons.component';
+import { DateTimeComponent } from './core/components/date-time/date-time.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +30,10 @@ import { TaskbarItemComponent } from './shared/components/taskbar-icon/taskbar-i
     ActionCenterComponent,
     MenuStartComponent,
     DesktopItemComponent,
-    TaskbarItemComponent
+    TaskbarItemComponent,
+    MenustartItemComponent,
+    SystemiconsComponent,
+    DateTimeComponent
   ],
   imports: [
     BrowserModule,

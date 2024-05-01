@@ -1,3 +1,67 @@
-<section id="menu-start">
-    <div ></div>
-</section>
+<div class="menu-start-container">
+    <div class="menu-start-container-search">
+        <div class="menu-start-container-search-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                stroke="#0384c0 " stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                class="feather feather-search">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+        </div>
+        <input type="text" class="menu-start-container-search-input" id="search" placeholder="Type here to search">
+    </div>
+</div>
+<div class="menu-start-container">
+    <div class="menu-start-container-pinned">
+        <div class="menu-start-container-pinned-header">
+            <div class="title">
+                <p>Pinned</p>
+            </div>
+            <div class="button">
+                <button>
+                    All apps
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="feather feather-chevron-right">
+                        <polyline points="9 18 15 12 9 6"></polyline>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <div class="menu-start-container-pinned-apps">
+            <menustart-item class="menu-start-item" *ngFor="let icon of icons" [id]="icon.id"
+                [image_path]="icon.image_path" (click)="openApp(icon.id)"></menustart-item>
+        </div>
+    </div>
+</div>
+<div class="menu-start-container">
+    <div class="menu-start-container-recommended">
+        <div class="menu-start-container-recommended-header">
+            <div class="title">
+                <p>Recommended</p>
+            </div>
+            <div class="button">
+                <button>
+                    More
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="feather feather-chevron-right">
+                        <polyline points="9 18 15 12 9 6"></polyline>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <br>
+        <br>
+        <br>
+    </div>
+</div>
+<div class="menu-start-container-user">
+    <div class="menu-start-container-user-container">
+        <div class="menu-start-container-user-container-info">
+            <img src="https://avatars.githubusercontent.com/u/32237558?v=4&s=50" alt="" srcset="">
+            <p>Ruri</p>
+        </div>
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-power"><path d="M18.36 6.64a9 9 0 1 1-12.73 0"></path><line x1="12" y1="2" x2="12" y2="12"></line></svg>
+    </div>
+</div>
