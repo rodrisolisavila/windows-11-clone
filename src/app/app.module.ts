@@ -20,6 +20,7 @@ import { TaskbarItemComponent } from './shared/components/taskbar-icon/taskbar-i
 import { MenustartItemComponent } from './shared/components/menustart-item/menustart-item.component';
 import { SystemiconsComponent } from './core/components/systemicons/systemicons.component';
 import { DateTimeComponent } from './core/components/date-time/date-time.component';
+import { DatePipe } from '@angular/common'; 
 
 @NgModule({
   declarations: [
@@ -43,9 +44,9 @@ import { DateTimeComponent } from './core/components/date-time/date-time.compone
     BrowserAnimationsModule,
     InputTextModule,
     AvatarModule,
-    AvatarGroupModule
+    AvatarGroupModule,
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
