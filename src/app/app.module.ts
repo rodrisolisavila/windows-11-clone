@@ -20,7 +20,8 @@ import { TaskbarItemComponent } from './shared/components/taskbar-icon/taskbar-i
 import { MenustartItemComponent } from './shared/components/menustart-item/menustart-item.component';
 import { SystemiconsComponent } from './core/components/systemicons/systemicons.component';
 import { DateTimeComponent } from './core/components/date-time/date-time.component';
-import { DatePipe } from '@angular/common'; 
+import { DatePipe } from '@angular/common';
+import { WidgetsComponent } from './core/components/widgets/widgets.component'; 
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { DatePipe } from '@angular/common';
     TaskbarItemComponent,
     MenustartItemComponent,
     SystemiconsComponent,
-    DateTimeComponent
+    DateTimeComponent,
+    WidgetsComponent
   ],
   imports: [
     BrowserModule,
