@@ -18,7 +18,6 @@ export class DesktopComponent {
     });
   }
 
-
   openApp(id: string) {
     this.appWindowService.showWindow(id);
   }

@@ -218,9 +218,9 @@ body {
 }
 
 .window-container.close-app {
-    transform:scale(.8);
-    opacity:.4;
-  }
+    transform: scale(.8);
+    opacity: .4;
+}
 
 @keyframes Pop {
     from {
@@ -229,7 +229,7 @@ body {
 
     to {
         transform: scale(1);
-        
+
     }
 }
 

@@ -23,7 +23,6 @@ export class WindowComponent implements OnInit {
   ngOnInit() {
     this.appWindowService.isVisible$.subscribe((isVisible) => {
       this.visible = isVisible;
-      console.log(this.visible);
     });
 
     this.appWindowService.id$.subscribe((id) => {
@@ -77,7 +76,7 @@ export class WindowComponent implements OnInit {
     }
   }
 
-  addIcon() {
+  addIcon(): void {
     const newIcon: Icon = {
       name: this.icon!.name,
       id: this.icon!.id,
@@ -87,9 +86,9 @@ export class WindowComponent implements OnInit {
     this.appWindowService.hideWindow();
   }
 
-  maximizeWindow() { }
+  maximizeWindow(): void { }
 
-  deleteIcon() {
+  deleteIcon(): void {
     this.window.nativeElement.classList.add('close-app');
     this.iconService.deleteIconById(this.id);
     setTimeout(() => {
