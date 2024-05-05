@@ -15,6 +15,7 @@ export class WindowComponent implements OnInit {
   @ViewChild('window') window!: ElementRef<HTMLElement>;
 
   public visible: boolean = false;
+  public maximized: boolean = false;
   public id: string = '';
   public icon: IconDesktop | undefined;
 
@@ -86,7 +87,23 @@ export class WindowComponent implements OnInit {
     this.appWindowService.hideWindow();
   }
 
-  maximizeWindow(): void { }
+  maximizeWindow(): void {
+    this.maximized = !this.maximized;
+    
+    if (this.maximized) {
+      if (this.window.nativeElement.parentElement) {
+        this.window.nativeElement.parentElement.style.top = '0';
+        this.window.nativeElement.parentElement.style.left = '0';
+      }
+      this.window.nativeElement.parentElement?.classList.add('window-maximized');
+    } else {
+      if (this.window.nativeElement.parentElement) {
+        this.window.nativeElement.parentElement.style.top = 'calc((100% - 300px) / 2)';
+        this.window.nativeElement.parentElement.style.left = 'calc((100% - 320px) / 2)';
+      }
+      this.window.nativeElement.parentElement?.classList.remove('window-maximized');
+    }
+  }
 
   deleteIcon(): void {
     this.window.nativeElement.classList.add('close-app');
