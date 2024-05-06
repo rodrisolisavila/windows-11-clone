@@ -1,87 +1,56 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { AppWindowService } from '../../services/app-window.service';
+import { IconService } from '../../services/icon.service';
 import { IconDesktop } from '../../interfaces/icondesktop.interface';
 import { Icon } from '../../interfaces/icon.interface';
-import { IconService } from '../../services/icon.service';
-
 
 @Component({
   selector: 'window',
   templateUrl: './window.component.html',
-  styleUrl: './window.component.css'
+  styleUrls: ['./window.component.css']
 })
 export class WindowComponent implements OnInit {
-
   @ViewChild('window') window!: ElementRef<HTMLElement>;
 
-  public visible: boolean = false;
-  public maximized: boolean = false;
-  public id: string = '';
-  public icon: IconDesktop | undefined;
+  public visible = false;
+  public maximized = false;
+  public id = '';
+  public icon?: IconDesktop;
 
-  constructor(private appWindowService: AppWindowService, private iconService: IconService) { }
+  constructor(
+    private appWindowService: AppWindowService,
+    private iconService: IconService
+  ) { }
 
-  ngOnInit() {
-    this.appWindowService.isVisible$.subscribe((isVisible) => {
+  ngOnInit(): void {
+    this.appWindowService.isVisible$.subscribe(isVisible => {
       this.visible = isVisible;
+      if (this.window) this.setWindowVisibility(isVisible);
     });
 
-    this.appWindowService.id$.subscribe((id) => {
+    this.appWindowService.id$.subscribe(id => {
       this.id = id;
-      this.iconService.getIconById(id).subscribe(icon => {
-        this.icon = icon
-      })
+      this.fetchIcon(id);
     });
-
   }
 
-  ngAfterViewInit() {
-    const draggableDiv = this.window.nativeElement.parentElement;
+  private setWindowVisibility(isVisible: boolean): void {
+    const parent = this.window.nativeElement.parentElement!;
+    parent.style.display = isVisible ? 'block' : 'none';
+  }
 
-    if (draggableDiv) {
-      let isDragging = false;
-      let offsetX: number;
-      let offsetY: number;
-
-      draggableDiv.addEventListener("mousedown", (event: MouseEvent) => {
-        isDragging = true;
-        offsetX = event.clientX - draggableDiv.offsetLeft;
-        offsetY = event.clientY - draggableDiv.offsetTop;
-
-        draggableDiv.style.cursor = "grabbing";
-      });
-
-      document.addEventListener("mousemove", (event: MouseEvent) => {
-        if (isDragging) {
-          let newLeft = event.clientX - offsetX;
-          let newTop = event.clientY - offsetY;
-
-          const maxRight = window.innerWidth - draggableDiv.clientWidth;
-          const maxBottom = window.innerHeight - draggableDiv.clientHeight;
-
-          newLeft = Math.max(0, Math.min(maxRight, newLeft));
-          newTop = Math.max(0, Math.min(maxBottom, newTop));
-
-          draggableDiv.style.left = `${newLeft}px`;
-          draggableDiv.style.top = `${newTop}px`;
-        }
-      });
-
-      document.addEventListener("mouseup", () => {
-        isDragging = false;
-        draggableDiv.style.cursor = "grab";
-      });
-
-      draggableDiv.style.position = "absolute";
-      draggableDiv.style.cursor = "grab";
-    }
+  private fetchIcon(id: string): void {
+    this.iconService.getIconById(id).subscribe(icon => {
+      this.icon = icon;
+    });
   }
 
   addIcon(): void {
+    if (!this.icon) return;
     const newIcon: Icon = {
-      name: this.icon!.name,
-      id: this.icon!.id,
-      image_path: this.icon!.image_path,
+      name: this.icon.name,
+      id: this.icon.id,
+      image_path: this.icon.image_path,
     };
     this.iconService.addDesktopIcon(newIcon);
     this.appWindowService.hideWindow();
@@ -89,23 +58,24 @@ export class WindowComponent implements OnInit {
 
   maximizeWindow(): void {
     this.maximized = !this.maximized;
-    
+    const parent = this.window.nativeElement.parentElement!;
     if (this.maximized) {
-      if (this.window.nativeElement.parentElement) {
-        this.window.nativeElement.parentElement.style.top = '0';
-        this.window.nativeElement.parentElement.style.left = '0';
-      }
-      this.window.nativeElement.parentElement?.classList.add('window-maximized');
+      parent.style.top = '0';
+      parent.style.left = '0';
+      parent.classList.add('window-maximized');
     } else {
-      if (this.window.nativeElement.parentElement) {
-        this.window.nativeElement.parentElement.style.top = 'calc((100% - 300px) / 2)';
-        this.window.nativeElement.parentElement.style.left = 'calc((100% - 320px) / 2)';
-      }
-      this.window.nativeElement.parentElement?.classList.remove('window-maximized');
+      parent.style.top = 'calc((100% - 300px) / 2)';
+      parent.style.left = 'calc((100% - 320px) / 2)';
+      parent.classList.remove('window-maximized');
     }
   }
 
   deleteIcon(): void {
+    const parent = this.window.nativeElement.parentElement!;
+    parent.style.top = 'calc((100% - 300px) / 2)';
+    parent.style.left = 'calc((100% - 320px) / 2)';
+    parent.style.display = 'none';
+    parent.classList.remove('window-maximized');
     this.window.nativeElement.classList.add('close-app');
     this.iconService.deleteIconById(this.id);
     setTimeout(() => {
@@ -113,5 +83,4 @@ export class WindowComponent implements OnInit {
       this.window.nativeElement.classList.remove('close-app');
     }, 100);
   }
-
 }
