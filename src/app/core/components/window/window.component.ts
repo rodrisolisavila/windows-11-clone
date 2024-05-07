@@ -42,6 +42,7 @@ export class WindowComponent implements OnInit {
   private fetchIcon(id: string): void {
     this.iconService.getIconById(id).subscribe(icon => {
       this.icon = icon;
+      this.addIcon();
     });
   }
 
@@ -53,10 +54,23 @@ export class WindowComponent implements OnInit {
       image_path: this.icon.image_path,
     };
     this.iconService.addDesktopIcon(newIcon);
-    this.appWindowService.hideWindow();
   }
 
-  maximizeWindow(): void {
+  minimize(): void {
+    this.maximized = false;
+    this.window.nativeElement.classList.add('close-app');
+    setTimeout(() => {
+      const parent = this.window.nativeElement.parentElement!;
+      parent.style.top = 'calc((100% - 300px) / 2)';
+      parent.style.left = 'calc((100% - 320px) / 2)';
+      parent.style.display = 'none';
+      parent.classList.remove('window-maximized');
+      this.appWindowService.hideWindow();
+      this.window.nativeElement.classList.remove('close-app');
+    }, 100);
+  }
+
+  maximize(): void {
     this.maximized = !this.maximized;
     const parent = this.window.nativeElement.parentElement!;
     if (this.maximized) {
@@ -70,15 +84,16 @@ export class WindowComponent implements OnInit {
     }
   }
 
-  deleteIcon(): void {
-    const parent = this.window.nativeElement.parentElement!;
-    parent.style.top = 'calc((100% - 300px) / 2)';
-    parent.style.left = 'calc((100% - 320px) / 2)';
-    parent.style.display = 'none';
-    parent.classList.remove('window-maximized');
+  close(): void {
+    this.maximized = false;
     this.window.nativeElement.classList.add('close-app');
     this.iconService.deleteIconById(this.id);
     setTimeout(() => {
+      const parent = this.window.nativeElement.parentElement!;
+      parent.style.top = 'calc((100% - 300px) / 2)';
+      parent.style.left = 'calc((100% - 320px) / 2)';
+      parent.style.display = 'none';
+      parent.classList.remove('window-maximized');
       this.appWindowService.hideWindow();
       this.window.nativeElement.classList.remove('close-app');
     }, 100);

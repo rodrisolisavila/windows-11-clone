@@ -266,6 +266,9 @@ body {
     font-weight: lighter;
     letter-spacing: .5px;
     margin-left: 5px;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 .window-container-actions {
@@ -619,7 +622,7 @@ body {
 .systemicons-container-sliders-brightness input {
     width: 80%;
     margin: 10px;
-    -webkit-appearance: none;
+    appearance: none;
     height: 5px;
     border-radius: 5px;
     outline: none;

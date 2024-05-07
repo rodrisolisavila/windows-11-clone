@@ -5,21 +5,21 @@
             <p class="window-container-titlebar-container-text">{{ icon?.name }}</p>
         </div>
         <div class="window-container-actions">
-            <div class="window-container-actions-item" (click)="addIcon()">
+            <div class="window-container-actions-item" (click)="minimize()">
                 <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
                     stroke="#000000" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"
                     class="feather feather-x">
                     <line x1="3" y1="12.5" x2="21" y2="12.5"></line>
                 </svg>
             </div>
-            <div class="window-container-actions-item" (click)="maximizeWindow()">
+            <div class="window-container-actions-item" (click)="maximize()">
                 <svg width="14" height="14" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path
                         d="M6 11.25C6 8.35051 8.3505 6 11.25 6H36.75C39.6495 6 42 8.3505 42 11.25V36.75C42 39.6495 39.6495 42 36.75 42H11.25C8.35051 42 6 39.6495 6 36.75V11.25ZM11.25 8.5C9.73122 8.5 8.5 9.73122 8.5 11.25V36.75C8.5 38.2688 9.73122 39.5 11.25 39.5H36.75C38.2688 39.5 39.5 38.2688 39.5 36.75V11.25C39.5 9.73122 38.2688 8.5 36.75 8.5H11.25Z"
                         fill="#000000"></path>
                 </svg>
             </div>
-            <div class="window-container-actions-item window-container-actions-item-close" (click)="deleteIcon()">
+            <div class="window-container-actions-item window-container-actions-item-close" (click)="close()">
                 <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
                     stroke="#000000" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"
                     class="feather feather-x">
@@ -30,7 +30,11 @@
         </div>
     </div>
     <div class="window-container-content">
-        <img class="window-container-content-img" [src]="icon?.image_path" [alt]="icon?.id">
+        <!-- <img class="window-container-content-img" [src]="icon?.image_path" [alt]="icon?.id"> -->
+        <div> 
+            <object type="text/html" data="https://rurimiaumiau.github.io/nyaruko/" width="800px" height="600px" style="overflow:auto;border:5px ridge blue">
+            </object>
+         </div>
         <h4 class="window-container-content-h4">{{ icon?.name }}</h4>
     </div>
 </div>
