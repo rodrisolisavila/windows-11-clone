@@ -4,6 +4,7 @@ import { Icon } from '../../interfaces/icon.interface';
 import { AppWindowService } from '../../../core/services/app-window.service';
 import { DatePipe } from '@angular/common';
 import { Subscription, interval } from 'rxjs';
+import { MenuService } from '../../services/menu.service';
 
 @Component({
   selector: 'taskbar',
@@ -20,7 +21,10 @@ export class TaskbarComponent implements OnInit, OnDestroy {
   currentDate: string | null = null;
   private dateSubscription?: Subscription;
 
-  constructor(private iconService: IconService, private appWindowService: AppWindowService, private datePipe: DatePipe) {
+  constructor(private iconService: IconService,
+    private appWindowService: AppWindowService,
+    private menuService: MenuService,
+    private datePipe: DatePipe) {
     this.iconService.iconTaskbar$.subscribe((icons) => {
       this.icons = icons;
     });
@@ -59,6 +63,22 @@ export class TaskbarComponent implements OnInit, OnDestroy {
   private updateDate(): void {
     const now = new Date();
     this.currentDate = this.datePipe.transform(now, 'dd/MM/yyyy');
+  }
+
+  displayStartMenu(): void {
+    this.menuService.showMenuStart();
+  }
+
+  displayWidgets(): void {
+    this.menuService.showWidgets();
+  }
+
+  displaySystemIcons(): void {
+    this.menuService.showSystemIcons();
+  }
+
+  displayDateTime(): void {
+    this.menuService.showDateTime();
   }
 
 }

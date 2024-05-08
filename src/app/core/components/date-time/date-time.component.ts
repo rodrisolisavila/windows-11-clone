@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { MenuService } from '../../services/menu.service';
 
 @Component({
   selector: 'date-time',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrl: './date-time.component.css'
 })
 export class DateTimeComponent implements OnInit {
+
+  @ViewChild('datetime') datetime!: ElementRef<HTMLElement>;
 
   date: Date = new Date();
   monthDays: string = '';
@@ -16,6 +19,13 @@ export class DateTimeComponent implements OnInit {
   monthName: string = '';
   today: string = '';
   today_month_year: string = '';
+
+  constructor(private menuService: MenuService) {
+    this.menuService.isVisibleDateTime$.subscribe(isVisibleDateTime => {
+      if (this.datetime) this.setWindowVisibility(isVisibleDateTime);
+    });
+  }
+  
 
   ngOnInit(): void {
     this.renderCalendar();
@@ -62,6 +72,18 @@ export class DateTimeComponent implements OnInit {
   nextMonth(): void {
     this.date.setMonth(this.date.getMonth() + 1);
     this.renderCalendar();
+  }
+
+  private setWindowVisibility(isVisible: boolean): void {
+    if (isVisible) {
+      this.datetime.nativeElement.parentElement!.style.display = 'block';
+    } else {
+      this.datetime.nativeElement.parentElement!.classList.add('hide-date-time');
+      setTimeout(() => {
+        this.datetime.nativeElement.parentElement!.classList.remove('hide-date-time');
+        this.datetime.nativeElement.parentElement!.style.display = 'none';
+      }, 150);
+    }
   }
 
 }

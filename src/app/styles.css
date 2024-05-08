@@ -176,7 +176,14 @@ body {
 .taskbar-systemtray-systemclock {
     text-align: right;
     margin-right: 10px;
+    margin-left: 5px;
     font-weight: 500;
+}
+
+
+.taskbar-systemtray-systemclock:hover {
+    cursor: pointer;
+    background-color: #c5c5c57a;
 }
 
 /* App Window */
@@ -327,38 +334,44 @@ body {
     background-color: #fff;
     bottom: 60px;
     left: 50%;
-    transform: translate(-50%);
+    transform: translate(-50%, 0%);
     backdrop-filter: blur(20.5px);
     -webkit-backdrop-filter: blur(20.5px);
     border-radius: 8px;
-    transition: .2s background ease;
-    animation: .4s slideUp;
-    animation-timing-function: ease;
-    animation-timing-function: cubic-bezier(.3, .5, 0, 1);
+    transition: 0.2s background ease;
+    animation: 0.4s slideUp;
+    animation-timing-function: cubic-bezier(0.3, 0.5, 0, 1);
     background: transparent;
     display: flex;
-    box-shadow: 0 2.8px 2.2px #00000005, 0 6.7px 5.3px #00000007, 0 12.5px 10px #00000009, 0 22.3px 17.9px #0000000b, 0 41.8px 33.4px #0000000d, 0 100px 80px #00000012;
+    box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.02),
+        0 6.7px 5.3px rgba(0, 0, 0, 0.028), 0 12.5px 10px rgba(0, 0, 0, 0.035),
+        0 22.3px 17.9px rgba(0, 0, 0, 0.042), 0 41.8px 33.4px rgba(0, 0, 0, 0.05),
+        0 100px 80px rgba(0, 0, 0, 0.07);
     flex-direction: column;
     overflow: hidden;
 }
 
-@keyframes slideUp {
-    0% {
-        transform: translate(-50%, 100%)
-    }
-
-    to {
-        transform: translate(-50%)
-    }
+.menu-start.hide-menu-start {
+    animation: 0.2s slideDown ease;
 }
 
 @keyframes slideUp {
-    0% {
-        transform: translate(-50%)
+    from {
+        transform: translate(-50%, 100%);
     }
 
     to {
-        transform: translate(-50%, 100%)
+        transform: translate(-50%, 0%);
+    }
+}
+
+@keyframes slideDown {
+    from {
+        transform: translate(-50%, 0%);
+    }
+
+    to {
+        transform: translate(-50%, 100%);
     }
 }
 
@@ -528,34 +541,40 @@ body {
     backdrop-filter: blur(20.5px);
     -webkit-backdrop-filter: blur(20.5px);
     border-radius: 6px;
-    transition: .2s background ease;
-    animation: .4s slideLeft;
-    animation-timing-function: ease;
-    animation-timing-function: cubic-bezier(.3, .5, 0, 1);
+    transition: 0.2s background ease;
+    animation: 0.4s slideUp_s;
+    animation-timing-function: cubic-bezier(0.3, 0.5, 0, 1);
     background: transparent;
     display: flex;
-    box-shadow: 0 2.8px 2.2px #00000005, 0 6.7px 5.3px #00000007, 0 12.5px 10px #00000009, 0 22.3px 17.9px #0000000b, 0 41.8px 33.4px #0000000d, 0 100px 80px #00000012;
+    box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.02),
+        0 6.7px 5.3px rgba(0, 0, 0, 0.028), 0 12.5px 10px rgba(0, 0, 0, 0.035),
+        0 22.3px 17.9px rgba(0, 0, 0, 0.042), 0 41.8px 33.4px rgba(0, 0, 0, 0.05),
+        0 100px 80px rgba(0, 0, 0, 0.07);
     flex-direction: column;
     overflow: hidden;
 }
 
-@keyframes slideLeft {
-    0% {
-        transform: translateY(50%)
+.systemicons.hide-systemicons {
+    animation: 0.2s slideDown_s ease;
+}
+
+@keyframes slideUp_s {
+    from {
+        transform: translateY(50%);
     }
 
     to {
-        transform: translateY(0)
+        transform: translateY(0%);
     }
 }
 
-@keyframes slideLeft {
-    0% {
-        transform: translateY(0)
+@keyframes slideDown_s {
+    from {
+        transform: translateY(0%);
     }
 
     to {
-        transform: translateY(100%)
+        transform: translateY(100%);
     }
 }
 
@@ -705,7 +724,35 @@ input[type="range"]::-webkit-slider-runnable-track {
     overflow-x: hidden;
     transition: all 0.5s ease-in;
     cursor: context-menu;
+    transition: 0.2s background ease;
+    animation: 0.4s slideInFromRight;
 }
+
+.date-time.hide-date-time {
+    animation: 0.2s slideOutToRight ease;
+    /* animation-timing-function: cubic-bezier(0.3, 0.5, 0, 1); */
+  }
+
+@keyframes slideInFromRight {
+    from {
+        transform: translate(100%, 0%);
+    }
+
+    to {
+        transform: translate(0%, 0%);
+    }
+}
+
+@keyframes slideOutToRight {
+    from {
+        transform: translate(0%, 0%);
+    }
+
+    to {
+        transform: translate(100%, 0%);
+    }
+}
+
 
 .date-time-header {
     width: 258px;
@@ -799,22 +846,50 @@ input[type="range"]::-webkit-slider-runnable-track {
 
 .widgets {
     height: calc(100vh - 70px);
-    background: rgba(255, 255, 255, .226);
+    background: rgba(255, 255, 255, 0.226);
     backdrop-filter: blur(20.5px);
     -webkit-backdrop-filter: blur(20.5px);
     border-radius: 6px;
-    box-shadow: 0 2.8px 2.2px #00000005, 0 6.7px 5.3px #00000007, 0 12.5px 10px #00000009, 0 22.3px 17.9px #0000000b, 0 41.8px 33.4px #0000000d, 0 100px 80px #00000012;
+    transition: 0.2s background ease;
+    display: flex;
+    box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.02),
+        0 6.7px 5.3px rgba(0, 0, 0, 0.028), 0 12.5px 10px rgba(0, 0, 0, 0.035),
+        0 22.3px 17.9px rgba(0, 0, 0, 0.042), 0 41.8px 33.4px rgba(0, 0, 0, 0.05),
+        0 100px 80px rgba(0, 0, 0, 0.07);
     position: absolute;
     top: 10px;
     left: 10px;
     width: clamp(400px, 40%, 1000px);
-    transition: .2s background ease;
-    animation: .4s _slideIn_uz1ia_1;
-    animation-timing-function: ease;
-    animation-timing-function: cubic-bezier(.3, .5, 0, 1);
+    transition: 0.2s background ease;
+    animation: 0.4s slideIn;
+    animation-timing-function: cubic-bezier(0.3, 0.5, 0, 1);
     padding: 10px 4%;
     display: flex;
     flex-direction: column;
+}
+
+.widgets.hide-widgets {
+    animation: 0.2s slideout ease;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translate(-100%, 0%);
+    }
+
+    to {
+        transform: translate(0%, 0%);
+    }
+}
+
+@keyframes slideout {
+    from {
+        transform: translate(0%, 0%);
+    }
+
+    to {
+        transform: translate(-100%, 0%);
+    }
 }
 
 .widgets-container-hour {
