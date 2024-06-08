@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AppWindowService } from '../../services/app-window.service';
+import { WindowService } from '../../services/window.service';
 import { IconService } from '../../services/icon.service';
 import { Icon } from '../../interfaces/icon.interface';
 
@@ -12,13 +12,13 @@ export class DesktopComponent {
 
   public icons: Icon[] = [];
 
-  constructor(private iconService: IconService, private appWindowService: AppWindowService,) {
+  constructor(private iconService: IconService, private windowService: WindowService,) {
     this.iconService.iconDesktop$.subscribe((icons) => {
       this.icons = icons;
     });
   }
 
   openApp(id: string) {
-    this.appWindowService.showWindow(id);
+    this.windowService.showWindow(id);
   }
 }

@@ -1,7 +1,7 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { Icon } from '../../interfaces/icon.interface';
 import { IconService } from '../../services/icon.service';
-import { AppWindowService } from '../../services/app-window.service';
+import { WindowService } from '../../services/window.service';
 import { MenuService } from '../../services/menu.service';
 
 @Component({
@@ -16,7 +16,7 @@ export class MenuStartComponent {
   public icons: Icon[] = [];
 
   constructor(private iconService: IconService,
-    private appWindowService: AppWindowService,
+    private windowService: WindowService,
     private menuService: MenuService) {
     this.iconService.iconDesktop$.subscribe((icons) => {
       this.icons = icons;
@@ -28,7 +28,7 @@ export class MenuStartComponent {
   }
 
   openApp(id: string) {
-    this.appWindowService.showWindow(id);
+    this.windowService.showWindow(id);
   }
 
   private setWindowVisibility(isVisible: boolean): void {

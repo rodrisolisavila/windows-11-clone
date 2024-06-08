@@ -8,7 +8,7 @@ import { PrimeNGConfig } from 'primeng/api';
 })
 export class AppComponent implements OnInit {
 
-  title = 'my-portfolio';
+  title = 'windows-11-clone';
   public visible: boolean = false;
 
   constructor(private primengConfig: PrimeNGConfig) { }

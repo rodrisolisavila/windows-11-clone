@@ -44,6 +44,16 @@ body {
     max-height: calc(100vh - 50px);
 }
 
+@media only screen and (max-width: 768px) {
+    .desktop {
+        margin-top: 40px;
+    }
+
+    .taskbar .taskbar-inner-container .taskbar-systemtray {
+        display: none;
+    }
+}
+
 .desktop-item {
     display: flex;
     flex-direction: column;
@@ -98,6 +108,7 @@ body {
     justify-content: center;
     transition: .2s all ease;
     min-height: 50px;
+    z-index: 3;
 }
 
 .taskbar-inner-container {
@@ -184,6 +195,28 @@ body {
 .taskbar-systemtray-systemclock:hover {
     cursor: pointer;
     background-color: #c5c5c57a;
+}
+
+
+/* Notification bar */
+.notificationbar {
+    width: 100%;
+    position: absolute;
+    top: 2%;
+    left: 0;
+}
+
+.notificationbar-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0 30px;
+}
+
+.notificationbar-container-wifi-batery {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
 
 /* App Window */
@@ -731,7 +764,7 @@ input[type="range"]::-webkit-slider-runnable-track {
 .date-time.hide-date-time {
     animation: 0.2s slideOutToRight ease;
     /* animation-timing-function: cubic-bezier(0.3, 0.5, 0, 1); */
-  }
+}
 
 @keyframes slideInFromRight {
     from {
@@ -859,7 +892,9 @@ input[type="range"]::-webkit-slider-runnable-track {
     position: absolute;
     top: 10px;
     left: 10px;
-    width: clamp(400px, 40%, 1000px);
+    /* width: clamp(400px, 40%, 1000px); */
+    width: 94%;
+    max-width: clamp(400px, 40%, 1000px);
     transition: 0.2s background ease;
     animation: 0.4s slideIn;
     animation-timing-function: cubic-bezier(0.3, 0.5, 0, 1);

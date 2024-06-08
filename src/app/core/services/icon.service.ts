@@ -19,10 +19,10 @@ export class IconService {
       url: '',
     },
     {
-      name: 'VSCode',
+      name: 'Code',
       id: 'vscode',
       image_path: 'app/assets/icons/desktop/vscode.svg',
-      window_title: 'VS Code',
+      window_title: 'Code',
       url: '',
     },
   ]);

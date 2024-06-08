@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { IconService } from '../../services/icon.service';
 import { Icon } from '../../interfaces/icon.interface';
-import { AppWindowService } from '../../../core/services/app-window.service';
+import { WindowService } from '../../services/window.service';
 import { DatePipe } from '@angular/common';
 import { Subscription, interval } from 'rxjs';
 import { MenuService } from '../../services/menu.service';
@@ -22,7 +22,7 @@ export class TaskbarComponent implements OnInit, OnDestroy {
   private dateSubscription?: Subscription;
 
   constructor(private iconService: IconService,
-    private appWindowService: AppWindowService,
+    private windowService: WindowService,
     private menuService: MenuService,
     private datePipe: DatePipe) {
     this.iconService.iconTaskbar$.subscribe((icons) => {
@@ -57,7 +57,7 @@ export class TaskbarComponent implements OnInit, OnDestroy {
   }
 
   openApp(id: string) {
-    this.appWindowService.showWindow(id);
+    this.windowService.showWindow(id);
   }
 
   private updateDate(): void {

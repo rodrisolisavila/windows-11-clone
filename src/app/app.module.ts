@@ -23,6 +23,7 @@ import { DateTimeComponent } from './core/components/date-time/date-time.compone
 import { DatePipe } from '@angular/common';
 import { WidgetsComponent } from './core/components/widgets/widgets.component'; 
 import { DraggableDirective } from './shared/directives/drag.directive';
+import { NotificationbarComponent } from './core/components/notificationbar/notificationbar.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { DraggableDirective } from './shared/directives/drag.directive';
     SystemiconsComponent,
     DateTimeComponent,
     WidgetsComponent,
-    DraggableDirective 
+    DraggableDirective,
+    NotificationbarComponent 
   ],
   imports: [
     BrowserModule,

@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { AppWindowService } from '../../../core/services/app-window.service';
+import { WindowService } from '../../../core/services/window.service';
 
 @Component({
   selector: 'taskbar-item',

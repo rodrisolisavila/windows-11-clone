@@ -2,7 +2,7 @@
     <div class="window-container-titlebar">
         <div class="window-container-titlebar-container">
             <img class="window-container-titlebar-container-img" [src]="icon?.image_path" [alt]="icon?.id">
-            <p class="window-container-titlebar-container-text">{{ icon?.name }}</p>
+            <p class="window-container-titlebar-container-text">{{ icon?.window_title }}</p>
         </div>
         <div class="window-container-actions">
             <div class="window-container-actions-item" (click)="minimize()">
@@ -30,11 +30,7 @@
         </div>
     </div>
     <div class="window-container-content">
-        <!-- <img class="window-container-content-img" [src]="icon?.image_path" [alt]="icon?.id"> -->
-        <div> 
-            <object type="text/html" data="https://rurimiaumiau.github.io/nyaruko/" width="800px" height="600px" style="overflow:auto;border:5px ridge blue">
-            </object>
-         </div>
+        <img class="window-container-content-img" [src]="icon?.image_path" [alt]="icon?.id">
         <h4 class="window-container-content-h4">{{ icon?.name }}</h4>
     </div>
 </div>

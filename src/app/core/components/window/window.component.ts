@@ -1,5 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { AppWindowService } from '../../services/app-window.service';
+import { WindowService } from '../../services/window.service';
 import { IconService } from '../../services/icon.service';
 import { IconDesktop } from '../../interfaces/icondesktop.interface';
 import { Icon } from '../../interfaces/icon.interface';
@@ -18,17 +18,17 @@ export class WindowComponent implements OnInit {
   public icon?: IconDesktop;
 
   constructor(
-    private appWindowService: AppWindowService,
+    private windowService: WindowService,
     private iconService: IconService
   ) { }
 
   ngOnInit(): void {
-    this.appWindowService.isVisible$.subscribe(isVisible => {
+    this.windowService.isVisible$.subscribe(isVisible => {
       this.visible = isVisible;
       if (this.window) this.setWindowVisibility(isVisible);
     });
 
-    this.appWindowService.id$.subscribe(id => {
+    this.windowService.id$.subscribe(id => {
       this.id = id;
       this.fetchIcon(id);
     });
@@ -65,7 +65,7 @@ export class WindowComponent implements OnInit {
       parent.style.left = 'calc((100% - 320px) / 2)';
       parent.style.display = 'none';
       parent.classList.remove('window-maximized');
-      this.appWindowService.hideWindow();
+      this.windowService.hideWindow();
       this.window.nativeElement.classList.remove('close-app');
     }, 100);
   }
@@ -94,7 +94,7 @@ export class WindowComponent implements OnInit {
       parent.style.left = 'calc((100% - 320px) / 2)';
       parent.style.display = 'none';
       parent.classList.remove('window-maximized');
-      this.appWindowService.hideWindow();
+      this.windowService.hideWindow();
       this.window.nativeElement.classList.remove('close-app');
     }, 100);
   }

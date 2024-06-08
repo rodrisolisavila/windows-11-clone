@@ -4,7 +4,7 @@ import { BehaviorSubject } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class AppWindowService {
+export class WindowService {
 
   private _isVisible = new BehaviorSubject<boolean>(false);
   isVisible$ = this._isVisible.asObservable();
