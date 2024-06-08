@@ -4,7 +4,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 [Risu4DB Web](https://rodrisolisavila.github.io/windows-11-clone/)
 
-![preview](windows11.clone.jpg)
+![preview](windows11clone.jpg)
 
 ## Development server
 
