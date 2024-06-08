@@ -4,7 +4,7 @@ import { DesktopComponent } from './core/components/desktop/desktop.component';
 
 const routes: Routes = [
   {
-    path: 'desktop',
+    path: '',
     component: DesktopComponent
   },
   {

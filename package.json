@@ -1,5 +1,5 @@
 {
-  "name": "my-portfolio",
+  "name": "windows-11-clone",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -10,7 +10,7 @@
     "build:github": "npm run delete:docs && npm run build:href && npm run copy:dist",
     "build:href": "ng build --base-href ./",
     "delete:docs": "del-cli docs",
-    "copy:dist": "xcopy /s dist\\my-portfolio\\browser\\* .\\docs\\",
+    "copy:dist": "xcopy /s dist\\windows-11-clone\\browser\\* .\\docs\\",
     "create-file-structure": "mkdirp src/app/core/guards src/app/core/interceptor src/app/core/services src/app/core/components src/app/core/constants src/app/core/enums src/app/core/models src/app/core/utils src/app/features src/app/shared/components src/app/shared/directives src/app/shared/pipes src/app/styles src/app/assets/i18n src/app/assets/images src/app/assets/static src/app/assets/icons"
   },
   "private": true,
